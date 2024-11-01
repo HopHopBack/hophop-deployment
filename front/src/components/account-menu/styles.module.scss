@@ -1,0 +1,60 @@
+@import 'src/styles/media';
+
+.menu {
+	display: flex;
+	gap: 25px;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid var(--primary-color);
+	border-radius: 60px;
+	padding: 8px;
+	box-shadow: 4px 4px 0 0 var(--primary-color);
+	background: var(--secondary-background-color);
+	overflow: hidden;
+
+	@media only screen and (max-width: $media-md) {
+		gap: 15px;
+	}
+}
+
+.item {
+	position: relative;
+	padding: 8px 24px;
+	border-radius: 60px;
+	font-weight: 300;
+	font-size: 40px;
+	line-height: 1.15;
+	transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+	@media only screen and (max-width: $media-md) {
+		font-size: 28px;
+		padding: 4px 12px;
+	}
+
+	&:not(:last-child) {
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 2px;
+			height: 80%;
+			background-color: var(--primary-color);
+			top: 50%;
+			right: -16px;
+			transform: translateY(-50%);
+			z-index: 0;
+
+			@media only screen and (max-width: $media-md) {
+				right: -12px;
+			}
+		}
+	}
+}
+
+.active {
+	border: 2px solid var(--primary-color);
+	border-radius: 60px;
+	background-color: var(--gray-color);
+	color: var(--secondary-background-color);
+	box-shadow: 1px 1px 0 2px var(--black);
+}

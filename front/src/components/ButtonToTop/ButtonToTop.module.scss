@@ -1,0 +1,68 @@
+@import 'src/styles/mixins';
+
+.buttonToTop {
+	margin-right: 10px;
+	bottom: 16px;
+	position: fixed;
+	z-index: 1000;
+	width: 64px;
+	height: 64px;
+	border-radius: 100%;
+	border: 1px solid var(--primary-color);
+	box-shadow: 2px 2px 0 2px var(--primary-color);
+	display: flex;
+	align-items: center;
+	padding-left: 12px;
+	padding-top: 6px;
+	background-color: var(--beige-color);
+	transition: var(--transition);
+	animation: bounce 1s ease-in-out infinite;
+
+	svg {
+		width: 35px;
+		height: 61px;
+
+		path {
+			transition: var(--transition);
+		}
+	}
+
+	&:hover {
+		border: 1px solid var(--gray-color);
+		box-shadow: 1px 1px 0 1px var(--gray-color);
+
+		svg {
+			path {
+				fill: var(--gray-color);
+			}
+		}
+	}
+}
+
+@keyframes bounce {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.visible {
+	opacity: 1;
+}
+
+.hidden {
+	opacity: 0;
+	animation: hideButton 0.3s ease;
+}
+
+@keyframes hideButton {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

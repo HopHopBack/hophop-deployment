@@ -1,0 +1,23 @@
+@import 'src/styles/media';
+@import "src/styles/mixins.scss";
+
+.page {
+	padding: 62px 60px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	@media only screen and (max-width: $media-md) {
+		padding: 30px 20px;
+	}
+}
+
+.title {
+	@include section-heading;
+	margin-top: 0;
+	margin-bottom: 24px;
+}
+
+.menu {
+	margin: 0 auto;
+}

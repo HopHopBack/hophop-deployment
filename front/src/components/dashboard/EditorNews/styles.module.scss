@@ -1,0 +1,162 @@
+.superMegaWrapper{
+	position: relative;
+}
+.wrapper {
+	background: var(--lightgreen-color);
+	font-size: 20px;
+	line-height: 1.1;
+	border: 2px solid var(--primary-color);
+	border-radius: 32px;
+	box-shadow: 2px 2px 0 2px var(--primary-color);
+	padding: 15px 20px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 100%;
+	min-height: 250px;
+
+	&.inputSuccess {
+		border: 2px solid var(--success-color);
+		box-shadow: 2px 2px 0 2px var(--success-color);
+	}
+
+	&.inputError {
+		border: 2px solid var(--error-color);
+		box-shadow: 2px 2px 0 2px var(--error-color);
+	}
+}
+
+.editor {
+	max-width: 500px;
+	width: 100%;
+}
+
+.menuWrapper {
+	width: fit-content;
+	padding: 12px 20px;
+	background-color: var(--beige-color);
+	border-radius: 35px;
+	border: 3px solid var(--gray-color);
+	margin: 0 auto;
+}
+
+.menuContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	color: var(--gray-color);
+}
+
+.buttonsWrapper {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+
+	&::after {
+		content: '';
+		display: block;
+		width: 2px;
+		height: 100%;
+		background-color: var(--gray-color);
+	}
+}
+
+.active {
+	color: var(--primary-color) !important;
+}
+
+.activeBg {
+	.alignLeft,
+	.alignCenter,
+	.alignRight {
+		span {
+			background-color: var(--primary-color);
+		}
+	}
+	.orderedList ,.bulletList{
+		color: var(--primary-color);
+	}
+}
+
+.underline {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+}
+
+.alignLeft {
+	align-items: flex-start;
+}
+
+.alignCenter {
+	align-items: center;
+}
+
+.alignRight {
+	align-items: flex-end;
+}
+
+.alignLeft,
+.alignCenter,
+.alignRight {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	span {
+		display: block;
+		height: 3px;
+		width: 15px;
+		background-color: var(--gray-color);
+		border-radius: 3px;
+
+		&:nth-child(2) {
+			width: 23px;
+		}
+	}
+}
+
+.orderedList {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	font-weight: bold;
+	margin-right: 20px;
+
+	span {
+		font-size: 11px;
+		position: absolute;
+
+		&:nth-child(1) {
+			top: -20px;
+		}
+
+		&:nth-child(2) {
+			top: -12px;
+			left: 5px;
+		}
+
+		&:nth-child(3) {
+			top: -2px;
+			left: 10px;
+		}
+	}
+}
+
+.none {
+	&::after {
+		display: none;
+	}
+}
+
+
+.error {
+	width: 100%;
+	display: block;
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 16px;
+	line-height: 1;
+	color: var(--error-color);
+	z-index: 50;
+}

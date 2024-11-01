@@ -1,0 +1,37 @@
+name: Deploy to Company Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Personal Repo
+        uses: actions/checkout@v3
+
+      - name: Push to Company Repo
+        env:
+          TOKEN: ${{ secrets.COMPANY_REPO_TOKEN }}
+        run: |
+          git config --global user.email "alex_web887@proton.me"
+          git config --global user.name "alexsanders-git"
+
+          # Клонуємо компанійський репозиторій
+          git clone https://$TOKEN@github.com/HopHopShop/hophop-deployment.git
+          cd hophop-deployment
+
+          # Видаляємо вміст папки front і створюємо її знову
+          rm -rf front
+          mkdir front
+
+          # Копіюємо файли з особистого репозиторію, виключаючи hophop-deployment
+          rsync -av --exclude='hophop-deployment' ../ front/
+
+          # Коміт та пуш у компанійський репозиторій
+          git add .
+          git commit -m "Deploy updates from front repo"
+          git push origin main

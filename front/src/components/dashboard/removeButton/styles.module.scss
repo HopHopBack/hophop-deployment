@@ -1,0 +1,23 @@
+@import "src/styles/mixins";
+
+.iconWrapper {
+	cursor: pointer;
+
+	svg {
+		width: 24px;
+		height: 24px;
+		transition: var(--transition);
+		color: var(--primary-color);;
+
+		&:hover {
+			color: #90353b;
+		}
+	}
+
+	@media screen and (max-width: $media-lg) {
+		svg {
+			height: 15px;
+			width: 15px;
+		}
+	}
+}

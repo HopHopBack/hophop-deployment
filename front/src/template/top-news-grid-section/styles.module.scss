@@ -1,0 +1,19 @@
+@import 'src/styles/media.scss';
+@import 'src/styles/mixins.scss';
+
+.title {
+	@include section-heading;
+	margin-top: 60px;
+	margin-bottom: 0px;
+}
+
+.cards {
+	padding-top: 32px;
+	padding-bottom: 32px;
+	background: var(--lightblue-color);
+
+	@media only screen and (max-width: $media-lg) {
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+}
