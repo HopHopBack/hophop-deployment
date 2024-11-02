@@ -35,7 +35,7 @@ export default function NavbarLinks() {
 			>
 				PRODUCT
 			</Link>
-			<Link href="/catalog" className={styles.nav_link}>
+			<Link href="#" className={styles.nav_link}>
 				CATALOG
 			</Link>
 		</ul>

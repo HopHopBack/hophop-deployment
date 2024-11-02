@@ -17,26 +17,24 @@ interface IProps {
 		cart?: boolean;
 		checkout?: boolean;
 	};
-	type?: 'default' | 'catalog';
 }
 
 export default function ProductCard({
 	product,
 	showCategory = false,
 	showButtons = { favorite: true, cart: false, checkout: false },
-	type = 'default',
 }: IProps) {
 	const images = getImages(product.images);
 
 	return (
-		<div className={`${styles.card} ${type === 'catalog' && styles.height}`}>
+		<div className={styles.card}>
 			<div className={styles.buttons}>
 				{showButtons.favorite && <AddToFavoriteButton product={product} />}
 				{showButtons.cart && <AddToCartButton product={product} />}
 				{showButtons.checkout && <GoToCheckoutButton product={product} />}
 			</div>
 
-			<div className={`${styles.imageWrapper}`}>
+			<div className={styles.imageWrapper}>
 				<Link href={`/product/${product.id}`}>
 					<Image
 						src={images[0]?.image || '/default-image.png'}

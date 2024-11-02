@@ -34,7 +34,6 @@
 		"react": "^18",
 		"react-dom": "^18",
 		"react-phone-number-input": "^3.4.3",
-		"react-range": "^1.10.0",
 		"sharp": "^0.33.5",
 		"swiper": "^11.1.4",
 		"yup": "^1.4.0",
