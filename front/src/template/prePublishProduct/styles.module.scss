@@ -7,30 +7,31 @@
 	height: 100vh;
 	z-index: 5000;
 	background: rgba(25, 44, 50, 0.9);
-
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-
 .container {
 	width: 100%;
-	height: 100%;
+	max-height: 90vh;
+	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	gap: 15px;
 	padding: 60px;
 
 	@media only screen and (max-width: 1100px) {
 		padding: 40px;
-		overflow-x: auto;
 	}
 
 	@media only screen and (max-width: $media-sm) {
 		padding: 30px;
 	}
 }
+
+
 
 .headWrapper {
 	display: flex;
@@ -69,7 +70,7 @@
 	background: var(--beige-color);
 	border-radius: 24px;
 	border: 2px solid #192C32;
-	box-shadow: 4px 4px 0px 4px #192C32;
+	box-shadow: 4px 4px 0 4px #192C32;
 
 }
 

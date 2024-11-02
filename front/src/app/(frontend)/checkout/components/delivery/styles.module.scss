@@ -4,6 +4,12 @@
 	.button {
 		text-align: center;
 	}
+
+	@media screen and (max-width: $media-lg) {
+		display: flex;
+		flex-direction: column;
+gap: 20px;
+	}
 }
 
 .deliveryImages {
@@ -45,7 +51,7 @@
 	.input {
 		width: 100%;
 		max-width: calc(50% - 10px);
-		margin-bottom: 30px;
+		//margin-bottom: 20px;
 
 		@media only screen and (max-width: $media-xl) {
 			max-width: unset;
