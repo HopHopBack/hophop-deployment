@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+
+  my-db:
+    image: postgres:16.4
+    container_name: hop_db_container
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: "hop_db"
+      POSTGRES_USER: "hop_user"
+      POSTGRES_PASSWORD: "hop_password"
+    networks:
+      - my_network
+    
+  back:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    image: backend_image
+    networks:
+      - my_network
+    ports:
+      - "8000:8000"
+    depends_on:
+      - my-db
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    image: frontend_image
+    depends_on:
+      - back
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+    environment:
+      - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
+
+networks:
+  my_network:
+    driver: bridge
