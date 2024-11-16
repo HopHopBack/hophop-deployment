@@ -9,7 +9,10 @@ import ReadyData from '@/app/(frontend)/checkout/components/readyData/ReadyData'
 import Button from '@/components/Button/Button';
 import Input from '@/components/Input/Input';
 import { useCheckout } from '@/store/checkout/Checkout.store';
-import { postalCodeValid } from '@/validation/checkout/validation';
+import {
+	addressValid,
+	postalCodeValid,
+} from '@/validation/checkout/validation';
 
 import styles from './styles.module.scss';
 import dhl from '../../../../../../public/delivery/dhl.png';
@@ -51,7 +54,7 @@ export default function Delivery() {
 			innerRef={ref}
 			validationSchema={yup
 				.object({
-					// shipping_address: addressValid,
+					shipping_address: addressValid,
 					shipping_postcode: postalCodeValid,
 				})
 				.required()}

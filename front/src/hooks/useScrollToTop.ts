@@ -9,9 +9,7 @@ export default function useScrollToTop() {
 
 		// Function for switching the button visibility depending on the scroll position
 		const toggleVisibility = () => {
-			window.scrollY > scrollThreshold
-				? setIsVisible(true)
-				: setIsVisible(false);
+			setIsVisible(window.scrollY > scrollThreshold);
 		};
 
 		// Add a scroll event listener

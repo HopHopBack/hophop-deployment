@@ -48,8 +48,6 @@ function DashboardSearchBar(props: IProps) {
 		},
 	});
 
-	console.log(data);
-
 	const handleSuggestionClick = (id: number) => {
 		router.push(`/dashboard/${type === 'customers' ? 'users' : type}/${id}`);
 		setQuery('');

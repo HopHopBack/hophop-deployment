@@ -16,7 +16,7 @@
 	padding-top: 6px;
 	background-color: var(--beige-color);
 	transition: var(--transition);
-	animation: bounce 1s ease-in-out infinite;
+	animation: bounce 0.98s ease-in-out infinite;
 
 	svg {
 		width: 35px;
@@ -27,13 +27,28 @@
 		}
 	}
 
-	&:hover {
-		border: 1px solid var(--gray-color);
-		box-shadow: 1px 1px 0 1px var(--gray-color);
+	@media (hover: hover) {
+		&:hover {
+			border: 1px solid var(--gray-color);
+			box-shadow: 1px 1px 0 1px var(--gray-color);
 
-		svg {
-			path {
-				fill: var(--gray-color);
+			svg {
+				path {
+					fill: var(--gray-color);
+				}
+			}
+		}
+	}
+
+	@media (hover: none) {
+		&:active {
+			border: 1px solid var(--gray-color);
+			box-shadow: 1px 1px 0 1px var(--gray-color);
+
+			svg {
+				path {
+					fill: var(--gray-color);
+				}
 			}
 		}
 	}
@@ -55,14 +70,5 @@
 
 .hidden {
 	opacity: 0;
-	animation: hideButton 0.3s ease;
-}
-
-@keyframes hideButton {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
+	pointer-events: none;
 }
