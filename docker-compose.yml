@@ -39,6 +39,17 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
 
+  # nginx:
+  #   build: ./nginx
+  #   container_name: nginx
+  #   restart: always
+  #   ports:
+  #     - '80:80'
+  #   volumes:
+  #     - ./nginx/cert:/etc/letsencrypt/
+  #   networks:
+  #     - my_network
+
 networks:
   my_network:
     driver: bridge
