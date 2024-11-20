@@ -1,0 +1,67 @@
+name: Deploy Project
+
+on:
+  push:
+    branches:
+      - devops
+
+
+jobs:
+  build_and_push:
+    name: Build Stage
+    runs-on: ubuntu-22.04
+
+    env:
+      SERVICE_BACKAND: back
+      SERVICE_FRONTEND: front
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Clean cache
+        run: docker builder prune -f
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+
+      #Create images
+      - name: Build Docker Backend image 
+        run: |
+          docker build \
+           -f hophop-deployment/back/Dockerfile \
+           -t ghcr.io/${{ github.repository }}/${{ env.SERVICE_BACKAND }}:${{ github.sha }} \
+           hophop-deployment/back
+
+      - name: Build Docker Frontend image 
+        run: |
+          docker build \
+           -f hophop-deployment/front/Dockerfile \
+           -t ghcr.io/${{ github.repository }}/${{ env.SERVICE_FRONTEND }}:${{ github.sha }} \
+           hophop-deployment/front
+
+
+      #Push images
+      - name: Push Docker Backend image to GitHub Container Registry
+        run: |
+          docker push ghcr.io/${{ github.repository }}/${{ env.SERVICE_BACKAND}}:${{ github.sha }}
+
+      - name: Push Docker Backend image to GitHub Container Registry
+        run: |
+          docker push ghcr.io/${{ github.repository }}/${{ env.SERVICE_FRONTEND}}:${{ github.sha }}
+
+
+      #Deploy images
+      - name: Deploy to Remote Server
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+            export REPOSITORY=${{ github.repository }}
+            export SHA=${{ github.sha }}
+            
+            docker-compose -f /home/ubuntu/hophop-deployment/docker-compose.yml up -d

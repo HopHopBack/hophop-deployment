@@ -10,32 +10,36 @@ services:
       POSTGRES_DB: "hop_db"
       POSTGRES_USER: "hop_user"
       POSTGRES_PASSWORD: "hop_password"
+    volumes:
+      - app_db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     networks:
-      - my_network
+      - hop_network
     
   back:
-    build:
-      context: ./back
-      dockerfile: Dockerfile
-    image: backend_image
+    image: ghcr.io/${REPOSITORY}/backend:${SHA}
+    restart: unless-stopped
     networks:
-      - my_network
+      - hop_network
     ports:
       - "8000:8000"
+    volumes:
+      - app_data:/data
     depends_on:
       - my-db
 
   front:
-    build:
-      context: ./front
-      dockerfile: Dockerfile
-    image: frontend_image
+    image: ghcr.io/${REPOSITORY}/frontend:${SHA}
+    restart: unless-stopped
     depends_on:
       - back
     ports:
       - "3000:3000"
     networks:
-      - my_network
+      - hop_network
+    volumes:
+      - app_build:/var/www/app/.next
     environment:
       - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
 
@@ -50,6 +54,13 @@ services:
   #   networks:
   #     - my_network
 
+volumes:
+  app_db:
+  app_data:
+  app_build:
+
+
 networks:
-  my_network:
+  app_network:
+    name: hop_network
     driver: bridge
