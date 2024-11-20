@@ -18,7 +18,7 @@ services:
       - hop_network
     
   back:
-    image: ghcr.io/${REPOSITORY}/backend:${SHA}
+    image: ghcr.io/${REPOSITORY}/back:${SHA}
     restart: unless-stopped
     networks:
       - hop_network
@@ -30,7 +30,7 @@ services:
       - my-db
 
   front:
-    image: ghcr.io/${REPOSITORY}/frontend:${SHA}
+    image: ghcr.io/${REPOSITORY}/front:${SHA}
     restart: unless-stopped
     depends_on:
       - back
