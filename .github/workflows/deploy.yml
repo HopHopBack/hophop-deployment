@@ -27,6 +27,12 @@ jobs:
 
 
       #Create images
+      - name: Print Working Directory
+        run: pwd # Проверяем текущую директорию
+
+      - name: List All Folders
+        run: ls -d */ # Отображаем список всех папок в текущей директории
+        
       - name: Build Docker Backend image 
         run: |
           docker build \
