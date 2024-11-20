@@ -61,6 +61,5 @@ volumes:
 
 
 networks:
-  app_network:
-    name: hop_network
+  hop_network:
     driver: bridge
