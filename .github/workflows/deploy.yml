@@ -32,20 +32,21 @@ jobs:
 
       - name: List All Folders
         run: ls -d */ # Отображаем список всех папок в текущей директории
-        
+
       - name: Build Docker Backend image 
         run: |
           docker build \
-           -f hophop-deployment/back/Dockerfile \
+           -f back/Dockerfile \
            -t ghcr.io/${{ github.repository }}/${{ env.SERVICE_BACKAND }}:${{ github.sha }} \
-           hophop-deployment/back
+           back
 
       - name: Build Docker Frontend image 
         run: |
           docker build \
-           -f hophop-deployment/front/Dockerfile \
+           -f front/Dockerfile \
            -t ghcr.io/${{ github.repository }}/${{ env.SERVICE_FRONTEND }}:${{ github.sha }} \
-           hophop-deployment/front
+           front
+
 
 
       #Push images
