@@ -21,12 +21,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-            export REPOSITORY=${{ github.repository }}
-            export SHA=${{ github.sha }}
-
-            echo "REPOSITORY=${REPOSITORY}"
-            echo "SHA=${SHA}"
-
-            REPOSITORY=${REPOSITORY} SHA=${SHA} docker-compose -f ${{ inputs.compose_file }} up -d
+            docker-compose -f ${{ inputs.compose_file }} restart
