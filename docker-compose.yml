@@ -18,20 +18,30 @@ services:
       - hop_network
     
   back:
+    build:
+        # context: ./back
+        # dockerfile: Dockerfile
     image: ghcr.io/${REPOSITORY}/back:${SHA}
     restart: unless-stopped
     networks:
       - hop_network
     ports:
       - "8000:8000"
+    env_file:
+      - back/.env
     volumes:
       - app_data:/data
     depends_on:
       - my-db
 
   front:
+    build:
+      # context: ./front
+      # dockerfile: Dockerfile
     image: ghcr.io/${REPOSITORY}/front:${SHA}
     restart: unless-stopped
+    env_file:
+      - front/.env
     depends_on:
       - back
     ports:
@@ -63,3 +73,4 @@ volumes:
 networks:
   hop_network:
     driver: bridge
+
