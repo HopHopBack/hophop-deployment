@@ -50,8 +50,8 @@ services:
       - hop_network
     volumes:
       - app_build:/var/www/app/.next
-    environment:
-      - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
+    # environment:
+      # - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
 
   # nginx:
   #   build: ./nginx
