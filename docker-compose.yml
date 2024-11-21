@@ -18,7 +18,7 @@ services:
       - hop_network
     
   back:
-    build:
+    # build:
         # context: ./back
         # dockerfile: Dockerfile
     image: ghcr.io/${REPOSITORY}/back:${SHA}
@@ -35,7 +35,7 @@ services:
       - my-db
 
   front:
-    build:
+    # build:
       # context: ./front
       # dockerfile: Dockerfile
     image: ghcr.io/${REPOSITORY}/front:${SHA}
