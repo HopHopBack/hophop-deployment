@@ -32,3 +32,12 @@ export const updateOderById = async (id: string, data: string) => {
 		body: JSON.stringify({ order_status: data }),
 	});
 };
+
+export const getDashboardOrderStatistics = async (days: number) => {
+	return await fetchWithAuthServer<IOrderStatisitcs>(
+		`checkout/order-statistics/?period=${days}`,
+		{
+			method: 'GET',
+		},
+	);
+};

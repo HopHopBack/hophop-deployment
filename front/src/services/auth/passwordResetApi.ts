@@ -16,21 +16,16 @@ export const requestPasswordReset = async (email: string) => {
 	}
 };
 
-export const resetPassword = async (
-	token: string,
-	user_email: string,
-	password: string,
-	password2: string,
-) => {
+export const resetPassword = async (data: {
+	token: string;
+	email: string;
+	password: string;
+	password2: string;
+}) => {
 	try {
 		return await fetchData('auth/reset-password/', {
 			method: 'POST',
-			body: JSON.stringify({
-				token,
-				user_email,
-				password,
-				password2,
-			}),
+			body: JSON.stringify(data),
 			headers: {
 				'Content-Type': 'application/json',
 			},

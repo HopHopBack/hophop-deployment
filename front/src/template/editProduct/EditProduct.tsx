@@ -50,7 +50,7 @@ interface IImage {
 
 export default function EditProduct(props: IProps) {
 	const { product } = props;
-
+	console.log(product);
 	const { data: categories, loading: categoriesLoading } = useFetch<
 		ICategory[]
 	>({

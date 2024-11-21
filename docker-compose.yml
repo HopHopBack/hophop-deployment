@@ -19,8 +19,8 @@ services:
     
   back:
     # build:
-        # context: ./back
-        # dockerfile: Dockerfile
+    #     context: ./back
+    #     dockerfile: Dockerfile
     image: ghcr.io/${REPOSITORY}/back:${SHA}
     restart: unless-stopped
     networks:
@@ -36,8 +36,8 @@ services:
 
   front:
     # build:
-      # context: ./front
-      # dockerfile: Dockerfile
+    #   context: ./front
+    #   dockerfile: Dockerfile
     image: ghcr.io/${REPOSITORY}/front:${SHA}
     restart: unless-stopped
     env_file:
@@ -51,7 +51,7 @@ services:
     volumes:
       - app_build:/var/www/app/.next
     # environment:
-      # - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
+    #   - NEXT_PUBLIC_API_URL=http://back:8000/api  # Actual runtime URL for backend
 
   # nginx:
   #   build: ./nginx

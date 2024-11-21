@@ -56,7 +56,7 @@
 	line-height: 1.1;
 	border: 2px solid var(--primary-color);
 	border-radius: 32px;
-	box-shadow: 3px 3px 0 3px var(--primary-color);
+	box-shadow: 2px 2px 0 2px var(--primary-color);
 	text-align: left;
 	background: var(--lightgreen-color);
 
@@ -103,4 +103,5 @@
 	line-height: 1;
 	color: var(--error-color);
 	z-index: 50;
+	font-weight: 700;
 }

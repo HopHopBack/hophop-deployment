@@ -15,7 +15,7 @@ export interface IProps {
 export default function Textarea(props: IProps) {
 	const { rows, title, className = '', ...rest } = props;
 	const [field, meta] = useField(rest);
-	const inputClassName = `${styles.input} ${meta.touched && meta.error ? styles.inputError : meta.touched ? styles.inputSuccess : ''}`;
+	const inputClassName = ` ${robotoCondensed.className} ${styles.input} ${meta.touched && meta.error ? styles.inputError : meta.touched ? styles.inputSuccess : ''}`;
 
 	return (
 		<div className={`${styles.inputWrapper} ${className}`}>
@@ -33,7 +33,9 @@ export default function Textarea(props: IProps) {
 				className={inputClassName}
 			/>
 			{meta.touched && meta.error ? (
-				<span className={`${styles.error}`}>{meta.error}</span>
+				<span className={`${styles.error}  ${robotoCondensed.className}`}>
+					{meta.error}
+				</span>
 			) : null}
 		</div>
 	);

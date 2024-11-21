@@ -68,6 +68,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	justify-content: center;
 }
 
 .title {
@@ -86,10 +87,9 @@
 	font-size: 22px;
 	max-width: 272px;
 	width: 100%;
-
 	@media only screen and (max-width: $media-md) {
 		max-width: 187px;
-		font-size: 14px;
+		font-size: 18px;
 		line-height: 1.14;
 	}
 }
@@ -103,8 +103,8 @@
 		justify-content: flex-end;
 
 		img {
-			width: 75px;
-			height: 75px;
+			min-width: 75px;
+			height: 100%;
 		}
 	}
 }

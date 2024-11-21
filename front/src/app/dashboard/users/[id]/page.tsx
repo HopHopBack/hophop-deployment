@@ -18,7 +18,6 @@ export async function generateMetadata({
 	params: { id },
 }: Props): Promise<Metadata> {
 	const user = await getDashboardUserById(id);
-
 	if (!user.success) {
 		return notFound();
 	}
@@ -30,7 +29,6 @@ export async function generateMetadata({
 
 export default async function DashboardProductsId({ params: { id } }: Props) {
 	const user = await getDashboardUserById(id);
-
 	if (!user.success) {
 		return NotFound();
 	}

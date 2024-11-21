@@ -1,0 +1,70 @@
+@import 'src/styles/media';
+
+.detailsWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: 240px;
+}
+
+.detailsLabel {
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 1.18;
+	letter-spacing: -0.02em;
+	color: var(--primary-color);
+
+	 @media only screen and (max-width: $media-md) {
+	 	font-size: 18px;
+	 }
+}
+
+
+.quickAnswerArea {
+	border: 2px solid var(--primary-color);
+	box-shadow: 3px 3px 0 3px var(--primary-color);
+	border-radius: 32px;
+	padding: 16px;
+	width: 100%;
+	min-height: 350px;
+	height: fit-content;
+	background-color: var(--lightgreen-color);
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1.13;
+	letter-spacing: -0.02em;
+	color: var(--gray-color);
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	box-sizing: border-box;
+}
+
+.buttonsContainer{
+	display: flex;
+	flex-direction:row;
+	justify-content: flex-end;
+	margin-top: 20px;
+}
+
+.deleteButton {
+	max-width: 250px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	font-weight: 300;
+	margin-right: 30px;
+	font-size: 18px;
+	line-height: 1.67;
+	text-decoration: underline;
+	color: var(--gray-color);
+
+	@media only screen and (max-width: $media-lg) {
+		max-width: 200px;
+	}
+
+	@media only screen and (max-width: $media-md) {
+		max-width: 150px;
+		font-size: 18px;
+	}
+}	

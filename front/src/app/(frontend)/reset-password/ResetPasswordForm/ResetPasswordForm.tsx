@@ -1,7 +1,6 @@
 'use client';
 
 import { Form, Formik } from 'formik';
-import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import * as yup from 'yup';
 
@@ -19,12 +18,14 @@ export interface IFormValuesProfile {
 	confirmPassword: string;
 }
 
-export default function ResetPasswordForm() {
-	const [errorMessage, setErrorMessage] = useState('');
-	const searchParams = useSearchParams();
+interface IProps {
+	token: string;
+	user_email: string;
+}
 
-	const token = searchParams.get('key') || '';
-	const user_email = searchParams.get('email') || '';
+export default function ResetPasswordForm(props: IProps) {
+	const { token, user_email } = props;
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const {
 		ref: successModalRef,
@@ -33,17 +34,17 @@ export default function ResetPasswordForm() {
 	} = useOutside(false);
 
 	const handleSubmit = async (values: IFormValuesProfile) => {
-		const res = await resetPassword(
-			token,
-			user_email,
-			values.newPassword,
-			values.confirmPassword,
-		);
+		const res = await resetPassword({
+			token: token,
+			email: user_email,
+			password: values.newPassword,
+			password2: values.confirmPassword,
+		});
 
 		if (res.success) {
 			setIsSuccessModalOpen(true);
 		} else {
-			setErrorMessage(res.error?.message || 'An unknown error occurred');
+			setErrorMessage(res.error?.message || 'чAn unknown error occurred');
 		}
 	};
 

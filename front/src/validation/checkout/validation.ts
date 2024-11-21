@@ -43,13 +43,7 @@ export const phoneValid = yup
 	)
 	.required('Phone number is required');
 
-export const addressValid = yup
-	.string()
-	.matches(
-		/^(?=.*[A-Za-z])[A-Za-z0-9\s]+$/,
-		'Address must contain only Latin letters',
-	)
-	.required('Address is required');
+export const addressValid = yup.string().required('Address is required');
 
 export const cityValid = yup
 	.string()
