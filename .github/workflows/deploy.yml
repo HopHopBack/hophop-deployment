@@ -1,9 +1,10 @@
 name: Deploy Project
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - devops
+      - main
 
 
 jobs:
@@ -27,12 +28,6 @@ jobs:
 
 
       #Create images
-      - name: Print Working Directory
-        run: pwd # Проверяем текущую директорию
-
-      - name: List All Folders
-        run: ls -d */ # Отображаем список всех папок в текущей директории
-
       - name: Build Docker Backend image 
         run: |
           docker build \
@@ -46,7 +41,6 @@ jobs:
            -f front/Dockerfile \
            -t ghcr.io/${{ github.repository }}/${{ env.SERVICE_FRONTEND }}:${{ github.sha }} \
            front
-
 
 
       #Push images

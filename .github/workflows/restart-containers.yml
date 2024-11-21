@@ -1,0 +1,24 @@
+name: Restart Containers
+
+on:
+  workflow_dispatch:
+    inputs:
+        compose_file:
+            description: 'Path to docker-compose.yml'
+            required: true
+            default: '/home/ubuntu/hophop-deployment/docker-compose.yml'
+
+
+jobs:
+  restart:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Open Remote Server
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker-compose -f ${{inputs.compose_file}} up -d
