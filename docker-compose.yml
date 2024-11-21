@@ -18,10 +18,10 @@ services:
       - hop_network
     
   back:
-    build:
-        context: ./back
-        dockerfile: Dockerfile
-    # image: ghcr.io/${REPOSITORY}/back:${SHA}
+    # build:
+    #     context: ./back
+    #     dockerfile: Dockerfile
+    image: ghcr.io/${REPOSITORY}/back:${SHA}
     restart: unless-stopped
     networks:
       - hop_network
@@ -35,10 +35,10 @@ services:
       - my-db
 
   front:
-    build:
-      context: ./front
-      dockerfile: Dockerfile
-    # image: ghcr.io/${REPOSITORY}/front:${SHA}
+    # build:
+    #   context: ./front
+    #   dockerfile: Dockerfile
+    image: ghcr.io/${REPOSITORY}/front:${SHA}
     restart: unless-stopped
     env_file:
       - front/.env
