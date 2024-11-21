@@ -21,4 +21,10 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker-compose -f ${{inputs.compose_file}} up -d
+            export REPOSITORY=${{ github.repository }}
+            export SHA=${{ github.sha }}
+
+            echo "REPOSITORY=${REPOSITORY}"
+            echo "SHA=${SHA}"
+
+            REPOSITORY=${REPOSITORY} SHA=${SHA} docker-compose -f ${{ inputs.compose_file }} up -d
