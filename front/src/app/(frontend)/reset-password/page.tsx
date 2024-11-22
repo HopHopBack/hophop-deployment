@@ -15,7 +15,11 @@ export default function ResetPasswordPage({
 	searchParams: Record<string, string | undefined>;
 }) {
 	const userEmail = searchParams['user_email'];
+	const token = searchParams['key'];
 
+	if (!userEmail || !token) {
+		return <div>Invalid URL</div>;
+	}
 	return (
 		<div className={styles.pageWrapper}>
 			<div>
@@ -31,7 +35,7 @@ export default function ResetPasswordPage({
 				/>
 			</div>
 			<Suspense>
-				<ResetPasswordForm />
+				<ResetPasswordForm token={token} user_email={userEmail} />
 			</Suspense>
 		</div>
 	);

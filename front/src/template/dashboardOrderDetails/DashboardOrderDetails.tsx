@@ -5,13 +5,13 @@ import { useState } from 'react';
 import useOutside from '@/hooks/useOutside';
 import { robotoCondensed } from '@/styles/fonts/fonts';
 
-import styles from './styles.module.scss';
-import { formatDate } from '@/utils/func/formatDate';
 import Loader from '@/components/Loader/Loader';
 import MessageError from '@/components/messageError/MessageError';
 import MessageSuccess from '@/components/messageSuccess/MessageSuccess';
-import { updateOderById } from '@/services/dashboard/orders/dashboard.orders.service';
+import { updateOrderById } from '@/services/dashboard/orders/dashboard.orders.service';
+import { formatDate } from '@/utils/func/formatDate';
 import { revalidateFunc } from '@/utils/func/revalidate/revalidate';
+import styles from './styles.module.scss';
 
 export interface IProps {
 	order: IOrderDetails;
@@ -61,7 +61,7 @@ export default function DashboardOrderDetails(props: IProps) {
 
 	const changeOrderStatus = async (data: string) => {
 		setIsLoading(true);
-		const res = await updateOderById(id, data);
+		const res = await updateOrderById(id, data);
 		if (res.data) {
 			await revalidateFunc('/dashboard/orders');
 			await revalidateFunc('/dashboard/orders/[id]', 'page');

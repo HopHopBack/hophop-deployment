@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import DashboardHeadLine from '@/components/dashboard/dashboardHeadLine/DashboardHeadLine';
-import DashboardTableCategories from '@/components/dashboard/dashboardTableCategories/DashboardTableCategories';
 import EmptyDataBlock from '@/components/dashboard/emptyDataBlock/EmptyDataBlock';
 
 import { getDashboardCategoriesServer } from '@/services/dashboard/categories/dashboard.categories.service';
 
 import { getDashboardCategoriesCreate } from '@/utils/paths/dashboard/dashboard.paths';
 
+import DashboardTable from '@/components/dashboard/dashboardTable/DashboardTable';
 import styles from './styles.module.scss';
 
 export const metadata: Metadata = {
@@ -31,7 +31,15 @@ export default async function DashboardCategories() {
 				searchType={'categories'}
 			/>
 			{categories.data.items.length > 0 ? (
-				<DashboardTableCategories categories={categories.data} />
+				<DashboardTable
+					columns={[
+						{ key: 'id', label: 'ID' },
+						{ key: 'name', label: 'Category' },
+						{ key: 'description', label: 'Description' },
+						{ key: 'actions', label: 'Actions' },
+					]}
+					data={categories.data}
+				/>
 			) : (
 				<EmptyDataBlock />
 			)}

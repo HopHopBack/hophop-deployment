@@ -55,11 +55,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		height: 100%;
+		
 		picture,
 		img {
 			width: 542px;
-			height: auto;
+			height: contain;
 		}
 	}
 }

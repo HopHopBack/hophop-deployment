@@ -3,10 +3,10 @@ import { notFound } from 'next/navigation';
 
 import AccountMenu from '@/components/account-menu';
 import EmptyDataBlock from '@/components/dashboard/emptyDataBlock/EmptyDataBlock';
-import DashboardTableOrders from '@/components/dashboard/dashboardTableOrders/DashboardTableOrders';
 
 import { fetchWithAuthServer } from '@/services/auth/fetchApiAuthServer.service';
 
+import DashboardTable from '@/components/dashboard/dashboardTable/DashboardTable';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
@@ -32,7 +32,19 @@ export default async function AccountOrdersPage() {
 
 			<div className={styles.wrapper}>
 				{orders && orders?.items?.length > 0 ? (
-					<DashboardTableOrders type={'profile'} orders={orders} />
+					<DashboardTable
+						columns={[
+							{ key: 'id', label: 'ID' },
+							{ key: 'order_status', label: 'Order Status' },
+							{ key: 'payment_status', label: 'Payment Status' },
+							{ key: 'total_quantity', label: 'Quantity' },
+							{ key: 'total_price', label: 'Price' },
+							{ key: 'created_at', label: 'Date' },
+							{ key: 'actions', label: 'Actions' },
+						]}
+						data={orders}
+						type="profile"
+					/>
 				) : (
 					<EmptyDataBlock />
 				)}

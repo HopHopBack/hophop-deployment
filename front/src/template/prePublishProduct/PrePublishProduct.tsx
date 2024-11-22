@@ -1,3 +1,4 @@
+'use client';
 import { X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -15,6 +16,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import 'swiper/css/pagination';
+import { useEffect } from 'react';
 
 export interface InterfacePrePublishProduct {
 	product: IProduct | null;
@@ -25,6 +27,15 @@ export default function PrePublishProduct(props: InterfacePrePublishProduct) {
 	const { product, setShowPrePublish } = props;
 	if (product === null) return null;
 	const imagesArr = getImages(product.images);
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	useEffect(() => {
+		document.body.classList.add('no-scroll');
+
+		return () => {
+			document.body.classList.remove('no-scroll');
+		};
+	}, []);
 	return (
 		<div className={styles.publishContainer}>
 			<div className={styles.container}>

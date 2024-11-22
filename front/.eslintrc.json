@@ -24,12 +24,30 @@
 				"arrowParens": "always"
 			}
 		],
-		"indent": ["error", "tab"],
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"],
-		"comma-dangle": ["error", "always-multiline"],
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"comma-dangle": [
+			"error",
+			"always-multiline"
+		],
 		"no-trailing-spaces": "error",
-		"eol-last": ["error", "always"],
+		"eol-last": [
+			"error",
+			"always"
+		],
 		"react/no-unescaped-entities": 0,
 		"no-unused-vars": "off",
 		"no-undef": "off"

@@ -1,8 +1,8 @@
 'use client';
 
+import cn from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import cn from 'classnames';
 
 import styles from './styles.module.scss';
 
@@ -18,7 +18,7 @@ export default function AccountMenu({ className }: IProps) {
 			<Link
 				href="/account/orders"
 				className={cn(styles.item, {
-					[styles.active]: pathname === '/account/orders',
+					[styles.active]: /^\/account\/orders(\/\d+)?$/.test(pathname),
 				})}
 			>
 				Orders

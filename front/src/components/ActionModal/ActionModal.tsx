@@ -40,6 +40,7 @@ const ActionModal = forwardRef(function ActionModal(
 						className={`${styles.imageWrapper} ${type === 'error' ? styles.error : ''}`}
 					>
 						<Image
+							className={styles.image}
 							src={iconSrc}
 							width={121}
 							height={200}

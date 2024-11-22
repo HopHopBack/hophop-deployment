@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import { getOderById } from '@/services/dashboard/orders/dashboard.orders.service';
+import { getOrderById } from '@/services/dashboard/orders/dashboard.orders.service';
 import DashboardOrderDetails from '@/template/dashboardOrderDetails/DashboardOrderDetails';
 import type { Metadata } from 'next';
 import { getNewsById } from '@/services/dashboard/news/dashbpard.news.service';
@@ -14,7 +14,7 @@ type Props = {
 export async function generateMetadata({
 	params: { id },
 }: Props): Promise<Metadata> {
-	const order = await getOderById(Number(id));
+	const order = await getOrderById(Number(id));
 
 	if (!order.success) {
 		return notFound();
@@ -26,7 +26,7 @@ export async function generateMetadata({
 }
 
 export default async function DashboardOrderEdit({ params: { id } }: Props) {
-	const order = await getOderById(Number(id));
+	const order = await getOrderById(Number(id));
 	if (!order.success) {
 		return notFound();
 	}

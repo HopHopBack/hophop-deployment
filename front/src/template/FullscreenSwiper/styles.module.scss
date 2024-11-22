@@ -1,0 +1,236 @@
+@import 'src/styles/mixins';
+
+.fullscreenOverlay {
+	padding-top: 30px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(6, 14, 15, 0.85);
+	z-index: 4000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	@media only screen and (max-width: $media-lg) {
+		padding-top: 90px;
+	}
+
+	.fullscreenSwiper {
+		border: 4px solid var(--primary-color);
+		width: 600px;
+		height: 750px;
+
+		@media only screen and (max-width: $media-lg) {
+			width: 400px;
+			height: 550px;
+		}
+
+		@media only screen and (max-width: $media-sm) {
+			width: 350px;
+			height: 500px;
+		}
+
+		@media only screen and (max-width: $media-xs) {
+			width: 300px;
+			height: 450px;
+		}
+
+		.fullscreenImage {
+			width: 100%;
+			height: auto;
+			transition: var(--transition);
+
+			cursor: zoom-in;
+
+			&.zoomed {
+				transform: scale(1.3);
+				cursor: zoom-out;
+			}
+		}
+	}
+
+	.closeButton {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		border: 2px solid var(--primary-color);
+		border-radius: 32px;
+		width: 60px;
+		height: 60px;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--secondary-background-color);
+		box-shadow: 2px 2px 0 2px var(--primary-color);
+		transition: all 0.2s ease;
+
+		@media only screen and (max-width: $media-sm) {
+			width: 40px;
+			height: 40px;
+		}
+
+		svg {
+			transition: var(--transition);
+			color: var(--primary-color);
+			width: 30px;
+			height: 30px;
+
+			@media only screen and (max-width: $media-sm) {
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		&:hover {
+			border: 2px solid #507178;
+			box-shadow: 2px 2px 0 2px #507178;
+
+			svg {
+				color: var(--gray-color);
+			}
+		}
+	}
+
+	.thumbnails {
+		display: flex;
+		justify-content: center;
+		max-width: 600px;
+		margin-top: 20px;
+
+		@media only screen and (max-width: $media-lg) {
+			max-width: 400px;
+		}
+
+		@media only screen and (max-width: $media-sm) {
+			width: 350px;
+		}
+
+		@media only screen and (max-width: $media-xs) {
+			width: 300px;
+		}
+
+		.swiperSlide2 {
+			height: 100px;
+			padding: 5px;
+
+			.thumbnailImage {
+				height: 64px;
+				cursor: pointer;
+				transition: var(--transition);
+
+				&.active {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+
+	.buttonContainer {
+		position: absolute;
+		width: 800px;
+		margin: 0 auto;
+		height: 750px;
+
+		@media only screen and (max-width: $media-lg) {
+			width: 550px;
+			height: 550px;
+		}
+
+		@media only screen and (max-width: $media-sm) {
+			width: 455px;
+			height: 500px;
+		}
+
+		@media only screen and (max-width: $media-xs) {
+			max-width: 410px;
+			height: 450px;
+		}
+
+		@media only screen and (max-width: 375px) {
+			display: none;
+			pointer-events: none;
+		}
+
+		.button {
+			border: 2px solid var(--primary-color);
+			border-radius: 32px;
+			width: 60px;
+			height: 60px;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: var(--secondary-background-color);
+			box-shadow: 2px 2px 0 2px var(--primary-color);
+			transition: all 0.2s ease;
+
+			@media only screen and (max-width: $media-sm) {
+				width: 40px;
+				height: 40px;
+			}
+
+			svg {
+				transition: var(--transition);
+				color: var(--primary-color);
+				width: 36px;
+				height: 36px;
+
+				@media only screen and (max-width: $media-sm) {
+					width: 24px;
+					height: 24px;
+				}
+			}
+
+			@media only screen and (hover: hover) {
+				&:hover {
+					border: 2px solid #507178;
+					box-shadow: 2px 2px 0 2px #507178;
+
+					svg {
+						color: var(--gray-color);
+					}
+				}
+			}
+
+			@media only screen and (hover: none) {
+				&:active {
+					border: 2px solid #507178;
+					box-shadow: 2px 2px 0 2px #507178;
+
+					svg {
+						color: var(--gray-color);
+					}
+				}
+			}
+		}
+
+		.button_left {
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.button_right {
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+
+			.iconRotate {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	.counter {
+		margin-top: 10px;
+		color: var(--secondary-background-color);
+		font-size: 26px;
+	}
+}

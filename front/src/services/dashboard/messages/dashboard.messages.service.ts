@@ -12,3 +12,9 @@ export const getMessagesDashboardClient = async (page: number) => {
 		method: 'GET',
 	});
 };
+
+export const getMessageDashboardClient = async (id: number) => {
+	return await fetchWithAuthServer<IMessages>(`contact-us/${id}`, {
+		method: 'GET',
+	});
+};

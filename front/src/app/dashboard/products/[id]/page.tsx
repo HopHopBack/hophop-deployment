@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { getProductByID } from '@/services/dashboard/products/dashboard.products.service';
 import EditProduct from '@/template/editProduct/EditProduct';
 import type { Metadata } from 'next';
-import { getOderById } from '@/services/dashboard/orders/dashboard.orders.service';
+import { getOrderById } from '@/services/dashboard/orders/dashboard.orders.service';
 
 type Props = {
 	params: {

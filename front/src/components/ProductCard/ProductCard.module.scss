@@ -17,6 +17,7 @@
 	}
 }
 
+
 .buttons {
 	position: absolute;
 	top: 28px;
@@ -118,5 +119,14 @@
 
 	@media only screen and (max-width: $media-sm) {
 		font-size: 14px;
+	}
+}
+
+
+.height {
+	width: 100%;
+
+	.imageWrapper {
+		height: 258px;
 	}
 }

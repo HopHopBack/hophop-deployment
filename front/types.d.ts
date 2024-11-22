@@ -145,6 +145,8 @@ interface IResponseJson<T> {
 }
 
 interface IOrderDetails {
+	tax_percent: number;
+	shipping_rate: number;
 	id: number;
 	created_at: string;
 	customer: null | IUser;
@@ -182,4 +184,15 @@ interface INews {
 	type: string;
 	image: string;
 	created_at: string;
+}
+
+interface IOrderStatisitcs {
+	total_orders: number;
+	active_orders: number;
+	completed_orders: number;
+	returned_orders: number;
+	total_orders_growth: number;
+	active_orders_growth: number;
+	completed_orders_growth: number;
+	returned_orders_growth: number;
 }

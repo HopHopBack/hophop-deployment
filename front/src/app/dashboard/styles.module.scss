@@ -5,6 +5,12 @@
 	flex-direction: column;
 	gap: 32px;
 	padding: 50px;
+	@media screen and (max-width: $media-sm){
+		padding: 30px;
+	}
+	@media screen and (max-width: $media-xs){
+		padding: 30px;
+	}
 }
 
 .header {
@@ -12,11 +18,21 @@
 	flex-direction: column;
 	gap: 32px;
 
+	@media screen and (max-width: $media-md){
+		gap:25px;
+	}
+	@media screen and (max-width: $media-md){
+		gap:10px;
+	}
+
 	.title {
 		font-size: 64px;
 		font-weight: 400;
 		line-height: 70px;
 		color: var(--primary-color);
+		@media screen and (max-width: $media-md){
+			font-size: 56px;
+		}
 	}
 
 	&_wrapper {
@@ -27,66 +43,4 @@
 		}
 	}
 
-}
-
-.body {
-}
-
-.item {
-	padding: 25px 15px;
-	background-color: var(--beige-color);
-	border: 2px solid var(--primary-color);
-	box-shadow: 2px 2px 0 2px var(--primary-color);
-	border-radius: 16px;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	width: 100%;
-	//width: fit-content;
-
-	@media screen and (max-width: $media-xxl) {
-		width: fit-content;
-
-	}
-
-	&_title {
-		font-size: 20px;
-		font-weight: 400;
-		line-height: 22px;
-		color: var(--primary-color);
-		text-align: left;
-	}
-
-	&_wrapper {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	&_container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-
-		.price, .arrow {
-			font-size: 18px;
-			font-weight: 400;
-			line-height: 16px;
-			letter-spacing: -0.31px;
-			color: var(--primary-color);
-			display: flex;
-			align-items: center;
-			gap: 10px;
-
-		}
-
-		.basket {
-			padding: 10px;
-			border-radius: 50%;
-			display: grid;
-			place-items: center;
-			border: 1.5px solid var(--primary-color);
-			box-shadow: 1.5px 1.5px 0 1.5px var(--primary-color);
-		}
-	}
 }
