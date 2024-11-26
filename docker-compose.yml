@@ -45,24 +45,13 @@ services:
     depends_on:
       - back
     ports:
-      - "3000:3000"
+      - "80:3000"
     networks:
       - hop_network
     volumes:
       - app_build:/var/www/app/.next
     environment:
       - NEXT_PUBLIC_API_URL=http://44.204.60.243:8000/api  # Actual runtime URL for backend
-
-  # nginx:
-  #   build: ./nginx
-  #   container_name: nginx
-  #   restart: always
-  #   ports:
-  #     - '80:80'
-  #   volumes:
-  #     - ./nginx/cert:/etc/letsencrypt/
-  #   networks:
-  #     - my_network
 
 volumes:
   app_db:
