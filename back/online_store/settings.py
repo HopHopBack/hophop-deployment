@@ -35,8 +35,6 @@ CSRF_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_SECURE = True
 
-SECURE_SSL_REDIRECT = True
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
