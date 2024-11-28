@@ -51,8 +51,8 @@ services:
     volumes:
       - app_build:/var/www/app/.next
     environment:
-      # - NEXT_PUBLIC_API_URL=http://44.204.60.243:8000/api
-      - NEXT_PUBLIC_API_URL=http://hophop.me:8000/api  # Actual runtime URL for backend
+      - NEXT_PUBLIC_API_URL=http://44.204.60.243:8000/api
+      # - NEXT_PUBLIC_API_URL=http://hophop.me:8000/api  # Actual runtime URL for backend
 
 volumes:
   app_db:
